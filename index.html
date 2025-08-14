@@ -290,13 +290,7 @@
             <div class="percentage"><span id="percentage">0</span>%</div>
         </div>
         
-        <div id="phoneForm" class="phone-form">
-            <div class="form-title">আপনার ফোন নম্বর দিন</div>
-            <div class="input-group">
-                <input type="tel" id="phoneInput" placeholder="01XXXXXXXXX" maxlength="11" required>
-            </div>
-            <button id="submitBtn" class="btn">জমা দিন</button>
-        </div>
+
         <br></br>
         
         <div id="offerButtons" class="offer-buttons">
@@ -384,8 +378,7 @@
             const loadingContainer = document.getElementById('loadingContainer');
             const progressBar = document.getElementById('progressBar');
             const percentage = document.getElementById('percentage');
-            const phoneForm = document.getElementById('phoneForm');
-            const phoneInput = document.getElementById('phoneInput');
+            
             const submitBtn = document.getElementById('submitBtn');
             const offerButtons = document.getElementById('offerButtons');
             const confirmation = document.getElementById('confirmation');
@@ -405,41 +398,14 @@
                         clearInterval(interval);
                         setTimeout(function() {
                             loadingContainer.style.display = 'none';
-                            phoneForm.style.display = 'block';
+                            offerButtons.style.display = 'block';
                         }, 500);
                     }
                 }, 50);
             });
             
-            // Submit button click event
-            submitBtn.addEventListener('click', function() {
-                const phone = phoneInput.value.trim();
-                
-                if (phone) {
-                    if (validatePhone(phone)) {
-                        phoneForm.style.display = 'none';
-                        offerButtons.style.display = 'block';
-                    } else {
-                        alert('অনুগ্রহ করে একটি বৈধ ১১ ডিজিটের ফোন নম্বর দিন (01XXXXXXXXX)');
-                    }
-                } else {
-                    alert('অনুগ্রহ করে আপনার ফোন নম্বর লিখুন');
-                }
-            });
             
-            // Phone number validation
-            function validatePhone(phone) {
-                const re = /^01[3-9]\d{8}$/;
-                return re.test(phone);
-            }
 
-            // Phone number formatting
-            phoneInput.addEventListener('input', function() {
-                this.value = this.value.replace(/\D/g, '');
-                if (this.value.length > 11) {
-                    this.value = this.value.slice(0, 11);
-                }
-            });
             
             // Offer buttons click events
             const offerBtns = document.querySelectorAll('.offer-btn');
@@ -1002,6 +968,4 @@
 </html>
     
 
-    
-    
-    
+
